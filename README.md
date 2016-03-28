@@ -1,6 +1,6 @@
 # Discrete Event Simulation
 
-Assume that we want to simulate a hypothetical factory that processes some jobs. The factory is composed of units, where each unit has a job queue and a worker. The worker is the main part which processes a job, and the job queue is the place where the next jobs are waiting to be processed. Once a unit processes a job, it pushes the job to one of the next possible units according to the factory layout. Each job may follow a different path in the factory and once a job is processed in an output unit, it's gone out of the system.
+Assume that we want to simulate a hypothetical factory that processes some jobs. The factory is composed of units, where each unit has a job queue and a worker. The worker is the main part which processes a job, and the job queue is the place where the next jobs are waiting to be processed. Once a unit processes a job, it pushes the job to one of the next possible units according to the factory layout. Each job may follow a different path in the factory and once a job is processed in an output unit, it's gone out of the system.
 
 ## Factory Layout
 
@@ -10,9 +10,11 @@ Figure 1 shows a sample factory with 5 units. In each factory, Unit 0 is the sin
 
 ## How factory works?
 
-The factory start working by waiting for the jobs which arrive sequentially but not at the same time. The units may be either idle, waiting for jobs, or busy processing them. We assume that each unit has a constant processing time for each job. After the processing is complete, the job is passed to one of the next units in the factory by two different ways:
+The factory start working by waiting for the jobs which arrive sequentially but not at the same time. The units may be either idle, waiting for jobs, or busy processing them. We assume that each unit has a constant processing time for each job. After the processing is complete, the job is passed to one of the next units in the factory by two different ways:
+
 1. Randomly: Next unit is selected uniformly randomly. That's if a unit has n outgoing connections, the job will be assigned each of the next units with probability 1/n.
-2. Unit with shortest queue rst: The unit with the shortest queue length will be get the job. If the queue lengths are equal, assign the job to the unit that's rst mentioned in the adjacency list.
+
+2. Unit with shortest queue first: The unit with the shortest queue length will be get the job. If the queue lengths are equal, assign the job to the unit that's first mentioned in the adjacency list.
 
 ## Input and Output Details
 
