@@ -1,16 +1,16 @@
 # Discrete Event Simulation
 
-Assume that we want to simulate a hypothetical factory that processes some jobs. The factory is composed of units, where each unit has a job queue and a worker. The worker is the main part which processes a job, and the job queue is the place where the next jobs are waiting to be processed. Once a unit processes a job, it pushes the job to one of the next possible units according to the factory layout. Each job may follow a different path in the factory and once a job is processed in an output unit, it's gone out of the system.
+Assume that we want to simulate a hypothetical factory that processes some jobs. The factory is composed of units, where each unit has a job queue and a worker. The worker is the main part which processes a job, and the job queue is the place where the next jobs are waiting to be processed. Once a unit processes a job, it pushes the job to one of the next possible units according to the factory layout. Each job may follow a different path in the factory and once a job is processed in an output unit, it's gone out of the system.
 
 ## Factory Layout
 
-Figure 1 shows a sample factory with 5 units. In each factory, Unit 0 is the single unit that act as the input unit. It accepts jobs and starts their processing. The units with incoming and outgoing connections are the intermediate units, such as Unit 1 andUnit 2 in this example. There may be many output units, which does not have an outgoing connection to another unit. In this example Unit 3 and Unit 4 are the output units. The layout of each factory is going to be represented with graph structure.
+Figure 1 shows a sample factory with 5 units. In each factory, Unit 0 is the single unit that act as the input unit. It accepts jobs and starts their processing. The units with incoming and outgoing connections are the intermediate units, such as Unit 1 and Unit 2 in this example. There may be many output units, which does not have an outgoing connection to another unit. In this example Unit 3 and Unit 4 are the output units. The layout of each factory is going to be represented with graph structure.
 
 ![Figure 1](http://i1027.photobucket.com/albums/y338/suyunu/Capture_zpshlymutrl.jpg)
 
 ## How factory works?
 
-The factory start working by waiting for the jobs which arrive sequentially but not at the same time. The units may be either idle, waiting for jobs, or busy processing them. We assume that each unit has a constant processing time for each job. After the processing is complete, the job is passed to one of the next units in the factory by two different ways:
+The factory start working by waiting for the jobs which arrive sequentially but not at the same time. The units may be either idle, waiting for jobs, or busy processing them. We assume that each unit has a constant processing time for each job. After the processing is complete, the job is passed to one of the next units in the factory by two different ways:
 
 1. Randomly: Next unit is selected uniformly randomly. That's if a unit has n outgoing connections, the job will be assigned each of the next units with probability 1/n.
 
